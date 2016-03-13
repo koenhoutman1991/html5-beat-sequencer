@@ -141,29 +141,14 @@ Metronome.tick();
 /*
  *	3. Keyboard listeners
  */
-
 window.addEventListener('keyup', function(e) {
-
-	console.log(e.keyCode);
 
 	switch(e.keyCode) {
 		case 32:
 			document.querySelector('.play-controls .play a').click();
 		break;
-		case 110:
+		case 78:
 			document.querySelector('.track__new a').click();
-		break;
-		case 39: 
-			// right
-		break;
-		case 37:
-			// left
-		break;
-		case 38:
-			// up
-		break;
-		case 40:
-			// down
 		break;
 	}
 

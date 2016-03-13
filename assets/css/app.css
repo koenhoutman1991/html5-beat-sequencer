@@ -51,8 +51,6 @@ body {
   flex-direction: row;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow: inset 0px -1px 0px rgba(63, 63, 63, 0.2); }
-  .track.selected {
-    outline: 2px solid #00f; }
   .track__data {
     position: relative;
     flex-basis: 280px;

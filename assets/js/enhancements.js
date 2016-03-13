@@ -140,7 +140,6 @@ var CustomUIBindings = {
 	*/
 	audioSelectionBinding: function(el) {
 
-		console.log(el);
 		el.dataset.selecting = false;
 
 		var select 	= el.querySelector('select');
