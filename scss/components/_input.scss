@@ -1,0 +1,69 @@
+.input-bpm {
+
+	input {
+		@include reset-input($hide-features: true);
+		width: 45px;
+		font-size: 26px;
+		border-bottom: 1px solid $grey-dark;
+		color: $grey-dark;
+		text-align: right;
+		padding-right: 2px;
+
+		& + span {
+			vertical-align: text-bottom;
+			line-height: 23px;
+			color: $grey-medium;
+			font-size: 12px;
+			font-weight: 600;
+			margin-left: 10px;
+		}
+	}
+
+}
+
+.toggle-edit {
+
+	input {
+		@include reset-input;
+		display: none;
+		line-height: 31px;
+		width: auto;
+	}
+
+	&.is-edit {
+	  	input { display: inline-block; }
+		span { display: none; }
+
+		.fa:before {
+			content: "\f00c";
+		}
+	}
+
+}
+
+.volume-slider {
+	-webkit-appearance: none;
+	display: block;
+	width: 100%;
+
+	&::-webkit-slider-runnable-track {
+		position: relative;
+		width: 100%;
+		height: 25px;
+		background-color: #444;
+	}
+
+	&::-webkit-slider-thumb {
+		-webkit-appearance: none;
+	    border: none;
+	    height: 25px;
+	    width: 25px;
+	    background: #333;
+	}
+
+	&:focus {
+		outline: 0;
+	}
+
+}
+

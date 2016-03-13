@@ -1,0 +1,203 @@
+.track {
+
+	position: relative;
+	display: flex;
+	flex-direction: row;
+
+	border-bottom: 1px solid rgba(255,255,255,.1);
+	box-shadow: inset 0px -1px 0px rgba(63,63,63,.2);
+
+	// &.selected {
+	// 	outline: 2px solid #00f;
+	// }
+
+	&__data {
+		position: relative;
+		flex-basis: 280px;
+		text-align: right;
+		color: $grey-medium-light;
+		padding-top: 20px;
+		padding-bottom: 20px;
+
+		&:after {
+			content: "";
+			position: absolute;
+			height: 100%;
+			width: 25px;
+			top: 0;
+			z-index: 5;
+			opacity: 1;
+			background: -webkit-linear-gradient(left, rgba(0,0,0,0.2) 0%,rgba(125,185,232,0) 100%);
+			transition: opacity 100ms linear;
+		}
+
+		.scroll-start &:after {
+			opacity: 0;
+		}
+
+	}
+
+	&__title {
+		display: inline-block;
+		vertical-align: middle;
+		margin: 0;
+	}
+
+	&__entry {
+
+		margin-bottom: 10px;
+
+		h2 {
+			font-size: 24px;
+			font-weight: 500;
+		}
+
+		h3 {
+			font-size: 13px;
+			font-weight: 500;
+		}
+	}
+
+	&__icon {
+		color: $grey-medium-light;
+		font-size: 13px;
+		margin-left: 15px;
+		margin-right: 20px;
+		text-decoration: none;
+	}
+
+	&__options {
+		.toolbar {
+			display: inline-block;
+		}
+	}
+
+	&__content {
+
+		position: relative;
+		overflow-y: auto;
+
+		&::-webkit-scrollbar {
+			display: none;
+		}
+
+	}
+
+	&__file {
+		display: none;
+	}
+
+	&:after {
+		content: "";
+		position: absolute;
+		height: 100%;
+		width: 25px;
+		top: 0;
+		right: 0;
+		z-index: 5;
+		opacity: 1;
+		background: -webkit-linear-gradient(left, rgba(125,185,232,0) 0%,rgba(0,0,0,0.2) 100%);
+		transition: opacity 100ms linear;
+	}
+
+	&.scroll-end:after {
+		opacity: 0;
+	}
+
+	&__new {
+
+		position: relative;
+		display: block;
+		height: 68px;
+		padding: 0;
+		color: #353535;
+
+		&--inner {
+			position: relative;
+			width: calc(100% - 30px);
+			height: calc(100% - 30px);
+			top: 15px;
+			left: 15px;
+			border: 2px dashed #353535;
+			text-align: center;
+
+			a {
+				display: block;
+				padding: 10px 0;
+				color: inherit;
+			}
+
+			&:hover {
+				border-color: #777;
+				color: #777;
+			}
+		}
+
+		&:after,
+		&:before {
+			display: none;
+		}
+
+	}
+
+	&__volume {
+		display: flex;
+		padding: 10px 16px 0 0;
+		margin-bottom: 0;
+		align-items: center;
+
+		span {
+			flex-basis: 35px;
+			padding-right: 10px;
+		}
+
+		.volume-slider {
+			flex-basis: 100%;
+		}
+
+	}
+
+	.toggle-edit {
+
+		input {
+			width: 160px;
+			text-align: right;
+			border-bottom: 1px solid $grey-medium;
+			margin-top: -1px;
+		}
+
+		span {
+			display: inline-block;
+			margin-bottom: 3px;
+		}
+
+		&.is-edit {
+
+			margin-top: -1px;
+
+			& > input {
+				display: inline-block;
+			}
+		}
+	}
+
+	.audio-select {
+		select {
+			display: none;
+		}
+
+		&.select {
+			select {
+				display: inline-block;
+			}
+			.track__title {
+				display: none;
+			}
+			.fa:before {
+				content: "\f00c";
+			}
+		}
+	}
+
+}
+	

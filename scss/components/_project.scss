@@ -1,0 +1,14 @@
+body {
+	-webkit-font-smoothing: antialiased;
+	font-family: "Helvetica Neue";
+}
+
+#project {
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+}
+#project-window {
+	flex: 1;
+	background-color: $grey-dark;
+}

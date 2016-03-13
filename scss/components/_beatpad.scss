@@ -1,0 +1,69 @@
+.beatpad {
+
+	white-space: nowrap;
+
+	&__pad {
+
+		display: inline-block;
+		width: 72px;
+		margin: 0 5px;
+
+		&--position {
+			text-align: center;
+			font-size: 13px;
+			color: #B3B3B3;
+			font-weight: 500;
+			padding: 8px 0;
+			opacity: .4;
+
+			.current-step & {
+				opacity: 1;
+			}
+		}
+
+		&--sequence-step {
+			padding: 10px;
+			span {
+				display: block;
+				background-color: #000;
+				height: 4px;
+				border-radius: 4px;
+				opacity: .2;
+			}
+
+			.current-step & span {
+				opacity: 1;
+				background-color: #d8d8d8;
+			}
+		}
+
+		&:last-child {
+			margin-right: 15px;
+		}
+
+	}
+
+	&__button {
+		position: relative;
+		display: block;
+		background-color: #3E3E3E;
+		height: 120px;
+		border-radius: 4px;
+		border-bottom: 1px solid rgba(99,99,99,.9);
+		border-top: 1px solid rgba(34,34,34,.5);
+		padding: 2px 4px 3px 4px;
+
+		span {
+			display: none;
+			width: 100%;
+			height: 100%;
+			background-image: linear-gradient(-225deg, #ABE28B 0%, #76BD55 100%);
+			border-radius: 2px;
+		}
+
+		.active & span {
+			display: block;
+		}
+	}
+
+}

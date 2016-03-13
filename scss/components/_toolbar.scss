@@ -1,0 +1,26 @@
+.toolbar {
+	@include inline-list;
+
+	li {
+		margin: 0 2px;
+	}
+
+	a {
+		display: block;
+		background-color: rgba(0,0,0,.2);
+		width: 24px;
+		height: 24px;
+		text-align: center;
+		color: inherit;
+		border-radius: 3px;
+
+		i {
+			margin-top: 4px;
+		}
+
+		&.active {
+			background-color: #3498db;
+			color: #fff;
+		}
+	}
+}

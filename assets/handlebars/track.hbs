@@ -1,0 +1,60 @@
+<div class="track selected scroll-start">
+
+	<div class="track__data">
+
+		<div class="track__entry track__options">
+			<ul class="toolbar">
+				<li><a href="#" data-option="mute"><i class="fa fa-volume-off"></i></a></li>
+				<li><a href="#" data-option="remove"><i class="fa fa-trash-o"></i></a></li>
+			</ul>
+			<i class="track__icon fa fa-cog"></i>
+		</div>
+
+		<div class="track__entry toggle-edit">
+			<h2 class="track__title">
+				<span>{{name}}</span>
+				<input />
+			</h2>
+			<a href="#" class="track__icon fa fa-tag toggle"></a>
+		</div>
+
+		<div class="track__entry audio-select">
+			<h3 class="track__title">{{file}}</h3>
+			<select>
+				{{#each files}}
+					<option value="{{this}}">{{this}}</option>
+				{{/each}}
+			</select>
+			<a href="#" class="track__icon fa fa-music"></a>
+		</div>
+
+		<div class="track__entry track__volume">
+			<span>
+				<i class="fa fa-volume-up"></i>
+			</span>
+			<input class="volume-slider" type="range" min="0" max="1" step="0.1" value="{{volume}}" />
+		</div>
+
+		<div class="track__file">
+			<audio src="sounds/{{file}}"></audio>
+		</div>
+
+	</div>
+
+	<div class="track__content">
+		<div class="beatpad">
+			{{#iterate beats}}
+				<div class="beatpad__pad">
+					<div class="beatpad__pad--position">{{this}}</div>
+					<a href="#" class="beatpad__button">
+						<span></span>
+					</a>
+					<div class="beatpad__pad--sequence-step">
+						<span></span>
+					</div>
+				</div>
+			{{/iterate}}
+		</div>
+	</div>
+
+</div>

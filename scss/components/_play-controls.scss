@@ -1,0 +1,22 @@
+.play-controls {
+
+	@include reset-list;
+
+	li {
+		display: inline-block;
+		margin: 0;
+	}
+
+	&__control a {
+		text-decoration: none;
+		font-size: 30px;
+		color: $grey-dark;
+	}
+
+	&.is-playing {
+		.play a:before {
+			content: "\f28c";
+		}
+	}
+
+}
