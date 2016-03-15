@@ -28,15 +28,19 @@
 		this.files = [];
 	};
 
+	//
+	// Methods
+	//
+
+	/**
+     * calls the api and appends its results to the soundsmanager
+     * @private
+     */
 	function getFiles() {
 		$.get('/api/files', function(response) {
 			SoundsManager.files = response;
 		});
 	}
-
-	// 
-	// SoundsManager Methods
-	//
 
 	getFiles();
 	return SoundsManager;

@@ -39,14 +39,8 @@
 		this.dom 			= null;
 		this.muted 			= false;
 		this.volume 		= 1;
-		this.selected 		= false;
 
 		this.template.data 	= this;
-	}
-
-	Track.select = function() {
-		var selected = this.selected = this.selected ? false : true;
-		this.dom.classList.toggle('selected', selected);
 	}
 
 	//
@@ -119,10 +113,6 @@
     	});
     }
 
-    TracksManager.select = function() {
-    	
-    }
-
 	/**
      * Callback function when a track has been added
      * @param track [Track]
@@ -130,6 +120,13 @@
      * @public
      */
 	TracksManager.onAdd = function(track) {};
+
+	/**
+     * Callback function when a track has been deleted
+     * @param track [Track]
+     * @returns void
+     * @public
+     */
 	TracksManager.onDelete = function(track) {};
 
 	return TracksManager;
