@@ -1,0 +1,18 @@
+{
+  "name": "beat-sequencer",
+  "description": "",
+  "main": "server.js",
+  "authors": [
+    "Koen Houtman <koenhoutman1991@me.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/koenhoutman1991/html5-beat-sequencer",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
