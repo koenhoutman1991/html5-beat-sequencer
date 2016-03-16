@@ -226,6 +226,8 @@ body {
     color: #505050; }
   .play-controls.is-playing .play a:before {
     content: "\f28c"; }
+  .app-bar .play-controls li:not(:first-child) {
+    margin-left: 5px; }
 
 .input-bpm input {
   -webkit-appearance: none;
