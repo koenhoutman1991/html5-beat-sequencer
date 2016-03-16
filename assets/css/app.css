@@ -54,6 +54,7 @@ body {
   .track__data {
     position: relative;
     flex-basis: 280px;
+    flex-shrink: 0;
     text-align: right;
     color: #B3B3B3;
     padding-top: 20px;
@@ -144,7 +145,7 @@ body {
     .track__volume .volume-slider {
       flex-basis: 100%; }
   .track .toggle-edit input {
-    width: 160px;
+    width: 225px;
     text-align: right;
     border-bottom: 1px solid #9E9E9E;
     margin-top: -1px; }
@@ -155,6 +156,8 @@ body {
     margin-top: -1px; }
     .track .toggle-edit.is-edit > input {
       display: inline-block; }
+  .track .audio-select h3 {
+    line-height: 20px; }
   .track .audio-select select {
     display: none; }
   .track .audio-select.select select {
