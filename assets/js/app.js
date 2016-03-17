@@ -36,6 +36,12 @@ TemplatesManager.load([
 		CustomUIBindings.trackOptionBindings(track.dom, track);
 		CustomUIBindings.trackVolumeBinding(track.dom, track);
 
+		Store.create('track', {
+			id: track.id,
+			name: track.name,
+			file: track.file
+		});
+
 	};
 
 	// handler for discharging track dom data
@@ -153,3 +159,14 @@ window.addEventListener('keyup', function(e) {
 	}
 
 });
+
+/*
+ *	4. DataStore design
+ */
+ Store.container('track', {
+ 	file: null,
+ 	name: null,
+ 	beatmap: [true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false]
+ });
+
+ console.log(Store);
