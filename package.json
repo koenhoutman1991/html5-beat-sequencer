@@ -11,6 +11,7 @@
   "devDependencies": {
     "ejs": "^2.4.1",
     "express": "^4.13.4",
+    "express-ejs-layouts": "^2.0.0",
     "gulp": "^3.9.1",
     "gulp-nodemon": "^2.0.6",
     "gulp-ruby-sass": "^2.0.6",
