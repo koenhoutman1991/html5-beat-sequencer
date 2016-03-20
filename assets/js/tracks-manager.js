@@ -40,6 +40,7 @@
 		this.muted 			= false;
 		this.volume 		= 1;
 
+		this.model 			= null;
 		this.template.data 	= this;
 	}
 
@@ -147,7 +148,7 @@
      * Exposes Track constructor onto TracksManager
      */
     TracksManager.Track = Track;
-    
+
 	return TracksManager;
 
 });

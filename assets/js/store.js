@@ -26,9 +26,12 @@
 	//
 	StoreContainer = function() {
 
+		var self = this;
+
 		//
 		// properties
 		//
+		this.currentIndex = 0;
 		this.attributes = [];
 		this.data = [];
 		this.model = {};
@@ -72,17 +75,24 @@
 		 */
 		this.entry = function(obj) {
 
-			var self = this;
-			var currentEntries = this.data.length;
-
 			var entry = {
-				_id: currentEntries+1
+				_id: currentIndex
 			};
 
 			// embed a removing method to the entry
 			entry._remove = function() {
-				var data = self.data;
-				console.log(data.find(this));
+				
+				var me = this;
+				var location = 0;
+				
+				// find the location of this entry
+				self.data.forEach(function(item, i, iterator) {
+					if(item === me) location = i;
+				});
+
+				// splice the datamodel
+				self.data.splice(location, 1);
+
 			}
 
 			for(var prop in this.model) {
@@ -97,7 +107,21 @@
 			}
 
 			this.data.push(entry);
+			this.currentIndex++;
 
+			return entry;
+
+		}
+
+		/**
+		 * serializes entries array in a valid json string
+		 * @param obj [object]
+		 * @public
+		 */
+		this.serialize = function() {
+			// var serialized = this.data;
+			// return JSON.stringify(serialized);
+			return this.data;
 		}
 
 	}
@@ -167,11 +191,17 @@
     }
 
     /**
-     * pushes a container instance to the store
+     * saving comes down to this method, it will parse a valid
+     * JSON string to store wherever you like
      * @public
      */
-    Store.create = function(name, config) {
-    	var container = this.containers[name];
+    Store.serialize = function() {
+    	var serialized = {};
+    	var containers = this.containers;
+    	for(var container in this.containers) {
+    		serialized[container] = this.containers[container].serialize();
+    	}
+    	return JSON.stringify(serialized);
     }
 
 	return Store;

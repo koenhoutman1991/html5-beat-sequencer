@@ -43,6 +43,7 @@ TemplatesManager.load([
 	// handler for discharging track dom data
 	TracksManager.onDelete = function(track) {
 		track.dom.parentNode.removeChild(track.dom);
+		track.model._remove();
 	}
 
 	// handle bpm input fields on init
@@ -166,8 +167,9 @@ TracksManager.extend(function() {
 	var self = this;
 	var store;
 
-	// create a track model for the store
-	store = Store.container('track', {
+	// create a track model for the store. also make sure
+	// the tracksmanager knows of this store.
+	TracksManager.store = Store.container('tracks', {
 		id: null,
 		name: null,
 		file: null,
@@ -182,7 +184,18 @@ TracksManager.extend(function() {
 	 * track data.
 	 */
 	this.save = function(track) {
-		store.entry(track);
+		var entry = this.store.entry(track);
+		track.model = entry;
+	}
+
+	// testing unloading t
+	this.testSerializer = function() {
+		var json = Store.serialize();
+
+		console.info('STRINGIFIED EXPORT:');
+		console.log(json);
+		console.info('PARSED EXPORT:');
+		console.log(JSON.parse(json));
 	}
 
 });
