@@ -129,6 +129,25 @@
      */
 	TracksManager.onDelete = function(track) {};
 
+	/**
+     * Method that scopes itself into callback fn
+     * @param fn [Function]
+     * @returns TracksManager
+     * @public
+     */
+    TracksManager.extend = function(fn) {
+    	if(fn) {
+    		fn.call(this);
+    	}
+
+    	return this;
+    }
+
+   /**
+     * Exposes Track constructor onto TracksManager
+     */
+    TracksManager.Track = Track;
+    
 	return TracksManager;
 
 });

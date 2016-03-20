@@ -36,10 +36,7 @@ TemplatesManager.load([
 		CustomUIBindings.trackOptionBindings(track.dom, track);
 		CustomUIBindings.trackVolumeBinding(track.dom, track);
 
-		Store.container('track').entry({
-			name: track.name,
-			file: track.file
-		});
+		TracksManager.save(track);
 
 	};
 
@@ -159,14 +156,33 @@ window.addEventListener('keyup', function(e) {
 
 });
 
-/*
- *	4. DataStore design
- * 	using Store.container method, give it a name and pass in an object,
- * 	you create a new model that defines the Track store.
- */
- Store.container('track', {
- 	file: null,
- 	name: null
- });
 
- console.log(Store);
+/*
+ *	4. Add DataStore utilities to other components of the app
+ */
+TracksManager.extend(function() {
+
+	// this = exposed TracksManager instance
+	var self = this;
+	var store;
+
+	// create a track model for the store
+	store = Store.container('track', {
+		id: null,
+		name: null,
+		file: null,
+		bars: null,
+		muted: null,
+		volume: null
+	});
+
+	/**
+	 * append a new method 'save' to TracksManager
+	 * this will utilise DataStore into the trackmanager for storing
+	 * track data.
+	 */
+	this.save = function(track) {
+		store.entry(track);
+	}
+
+});
