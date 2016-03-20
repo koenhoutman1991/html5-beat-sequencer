@@ -161,6 +161,12 @@ window.addEventListener('keyup', function(e) {
 /*
  *	4. Add DataStore utilities to other components of the app
  */
+
+// first initialise the embedded local storage adapter
+Store.LSAdapter.init({
+	key: 'beat-composer'
+});
+
 TracksManager.extend(function() {
 
 	// this = exposed TracksManager instance
@@ -186,16 +192,7 @@ TracksManager.extend(function() {
 	this.save = function(track) {
 		var entry = this.store.entry(track);
 		track.model = entry;
-	}
-
-	// testing unloading t
-	this.testSerializer = function() {
-		var json = Store.serialize();
-
-		console.info('STRINGIFIED EXPORT:');
-		console.log(json);
-		console.info('PARSED EXPORT:');
-		console.log(JSON.parse(json));
+		Store.save();
 	}
 
 });

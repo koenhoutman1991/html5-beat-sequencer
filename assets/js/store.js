@@ -20,6 +20,45 @@
 	//
 	var Store;
 	var StoreContainer;
+	var LSAdapter;
+
+	//
+	// LocalStorageAdapter object
+	//
+	LSAdapter = {
+		setup: {},
+		key: 'store',
+		init: function(setup) {
+
+			this.setup = setup;
+
+			// set properties
+			for(var key in setup) {
+				if(this.hasOwnProperty(key)) {
+					this[key] = setup[key];
+				}
+			}
+
+			if(!this.keyExists()) {
+				window.localStorage.setItem(this.key, '{}');
+			}
+
+			return this;
+		},
+		keyExists: function() {
+			return !!window.localStorage.getItem(this.key);
+		},
+		save: function(json) {
+			window.localStorage.setItem(this.key, json);
+		},
+		reset: function() {
+			window.localStorage.removeItem(this.key);
+			this.init(this.setup);
+		},
+		parse: function() {
+			JSON.parse(window.localStorage.getItem(this.key));
+		}
+	}
 
 	//
 	// Constructor StoreContainer
@@ -75,8 +114,9 @@
 		 */
 		this.entry = function(obj) {
 
+			var me = this;
 			var entry = {
-				_id: currentIndex
+				_id: me.currentIndex
 			};
 
 			// embed a removing method to the entry
@@ -162,15 +202,6 @@
     }
 
     /**
-     * returns a key from the public data scope
-     * @param key [string]
-     * @public
-     */
-  	Store.get = function() {
-
-  	}
-
-    /**
      * defines a container and adds it to the scope
      * @public
      */
@@ -203,6 +234,23 @@
     	}
     	return JSON.stringify(serialized);
     }
+
+    /**
+	 * This will store the serialized JSON into a target adapter.
+     * JSON string to store wherever you like
+     * @public
+     */
+    Store.save = function() {
+    	console.log('save');
+    	this.LSAdapter.save(this.serialize());
+    }
+
+    /**
+	 * Exposes the LocalStorageAdapter
+     * JSON string to store wherever you like
+     * @public
+     */
+    Store.LSAdapter = LSAdapter;
 
 	return Store;
 
