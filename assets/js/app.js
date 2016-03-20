@@ -36,8 +36,7 @@ TemplatesManager.load([
 		CustomUIBindings.trackOptionBindings(track.dom, track);
 		CustomUIBindings.trackVolumeBinding(track.dom, track);
 
-		Store.create('track', {
-			id: track.id,
+		Store.container('track').entry({
 			name: track.name,
 			file: track.file
 		});
@@ -162,11 +161,12 @@ window.addEventListener('keyup', function(e) {
 
 /*
  *	4. DataStore design
+ * 	using Store.container method, give it a name and pass in an object,
+ * 	you create a new model that defines the Track store.
  */
  Store.container('track', {
  	file: null,
- 	name: null,
- 	beatmap: [true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false]
+ 	name: null
  });
 
  console.log(Store);
